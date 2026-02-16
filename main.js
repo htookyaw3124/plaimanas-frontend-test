@@ -40,10 +40,21 @@ function toggleMenu() {
 // FAQ Tab Switcher
 // ============================================
 function setActiveTab(clicked) {
+    // Update tab button styles
     document.querySelectorAll('#faq-tabs .faq-tab').forEach(btn => {
         btn.classList.remove('active', 'bg-white', 'text-black');
         btn.classList.add('bg-zinc-800', 'hover:bg-zinc-700', 'text-white');
     });
     clicked.classList.remove('bg-zinc-800', 'hover:bg-zinc-700', 'text-white');
     clicked.classList.add('active', 'bg-white', 'text-black');
+
+    // Show/hide FAQ panels
+    const targetTab = clicked.getAttribute('data-tab');
+    document.querySelectorAll('.faq-panel').forEach(panel => {
+        if (panel.getAttribute('data-faq-panel') === targetTab) {
+            panel.classList.remove('hidden');
+        } else {
+            panel.classList.add('hidden');
+        }
+    });
 }

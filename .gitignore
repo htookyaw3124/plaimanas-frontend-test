@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Debug
+_debug_frames/
+_debug_frames2/
+_debug_frames3/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

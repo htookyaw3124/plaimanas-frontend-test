@@ -4,7 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Plaimanas Static Page</title>
+  <title>PLAIMANAS — Premium Fashion Collections</title>
+  <meta name="description"
+    content="Discover premium fashion collections, bestsellers, and new arrivals at PLAIMANAS. Worldwide shipping available." />
+  <meta property="og:title" content="PLAIMANAS — Premium Fashion Collections" />
+  <meta property="og:description"
+    content="Discover premium fashion collections, bestsellers, and new arrivals at PLAIMANAS." />
+  <meta property="og:type" content="website" />
   <link rel="stylesheet" href="style.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,7 +43,7 @@
 
 <body class="font-sans text-black bg-white overflow-x-hidden antialiased">
   <!-- Header Section -->
-  <header
+  <header role="banner"
     class="fixed top-0 left-0 w-full flex justify-between items-center px-5 py-5 bg-white z-[1002] border-b border-gray-100 text-xs uppercase">
     <!-- Left: Currency -->
     <div class="header-left relative text-[13px]">
@@ -57,10 +63,11 @@
 
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex space-x-8 text-[13px] font-normal leading-none tracking-normal">
-      <a href="#"
+    <nav aria-label="Main navigation"
+      class="hidden md:flex space-x-8 text-[13px] font-normal leading-none tracking-normal">
+      <a href="#featured"
         class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block">WOMEN</a>
-      <a href="#"
+      <a href="#collections"
         class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block">COLLECTIONS</a>
       <div class="group/editorial static">
         <a href="#"
@@ -80,14 +87,15 @@
           </div>
         </div>
       </div>
-      <a href="#"
+      <a href="#marquee"
         class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block">NEWS</a>
-      <a href="#"
+      <a href="#faq"
         class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block">STORIES</a>
     </nav>
 
     <!-- Mobile Hamburger / Close Toggle -->
-    <div class="md:hidden cursor-pointer z-[1002]" onclick="toggleMenu()">
+    <button aria-label="Toggle menu" class="md:hidden cursor-pointer z-[1002] bg-transparent border-none p-0"
+      onclick="toggleMenu()">
       <div id="hamburger-icon" class="flex flex-col justify-between h-3 w-6">
         <span class="block w-full h-[1px] bg-black"></span>
         <span class="block w-full h-[1px] bg-black"></span>
@@ -95,13 +103,13 @@
       <div id="close-icon" class="hidden text-2xl font-light leading-none">
         &#10005;
       </div>
-    </div>
+    </button>
 
     <!-- Right: Sign In & Bag -->
     <div class="header-right flex items-center space-x-5 text-[13px]">
       <a href="#" class="hover:text-gray-600 transition-colors">SIGN IN</a>
       <a href="#" class="text-lg">
-        <img src="./assets/bag.svg" alt="">
+        <img src="./assets/bag.svg" alt="Shopping bag" width="20" height="20">
       </a>
       <!-- Icon bag -->
     </div>
@@ -113,7 +121,8 @@
 
 
     <!-- Menu Links -->
-    <nav class="flex flex-col space-y-8 text-[13px] font-normal uppercase leading-none tracking-normal mt-12">
+    <nav aria-label="Mobile navigation"
+      class="flex flex-col space-y-8 text-[13px] font-normal uppercase leading-none tracking-normal mt-12">
       <a href="#" class="hover:text-gray-500 transition-colors">WOMEN</a>
       <a href="#" class="hover:text-gray-500 transition-colors">COLLECTIONS</a>
       <details class="group">
@@ -138,14 +147,14 @@
 
     <!-- Bottom Branding -->
     <div class="absolute bottom-10 w-full text-center px-5">
-      <h1 class="text-5xl font-black uppercase tracking-tighter">
+      <span class="text-5xl font-black uppercase tracking-tighter block">
         PLAIMANAS
-      </h1>
+      </span>
     </div>
   </div>
 
   <!-- Video Background Section (Hero) -->
-  <section class="relative w-full h-[150vh] bg-black">
+  <section id="hero" class="relative w-full h-[150vh] bg-black">
     <!-- Sticky Video -->
     <video autoplay muted loop playsinline class="sticky top-10 left-0 w-full h-screen object-cover z-10 block">
       <source src="./assets/banner_desktop.mp4" type="video/mp4" />
@@ -154,7 +163,7 @@
 
     <!-- Logo Text with Negative Effect -->
     <div
-      class="fixed top-0 px-auto sm:left-0 w-full h-full z-[100] flex justify-center items-start pointer-events-none mix-blend-difference">
+      class="fixed top-0 px-0 sm:left-0 w-full h-full z-[100] flex justify-center items-start pointer-events-none mix-blend-difference">
       <img src="./assets/Logo.svg" alt="PLAIMANAS"
         class="sm:h-[100px] sm:w-[1000px] md:h-[215px] md:w-[1402px] mt-[68px] md:mt-[8px] object-contain">
     </div>
@@ -163,11 +172,12 @@
 
 
   <!-- Featured Section -->
-  <section class="mt-16">
+  <section id="featured" class="mt-16">
     <div class="relative h-[286px] md:h-[572px] flex flex-col items-center justify-center bg-white">
       <div
         class="absolute top-0 w-[282px] h-[286px] md:w-full md:max-w-[566px] md:aspect-[566/572] md:h-auto bg-gray-100 mb-8 overflow-hidden group">
         <img src="./assets/dts_teeth.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Featured Item"
+          loading="lazy"
           class="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-105">
       </div>
       <div class="sticky top-[140px] md:top-[280px] z-10 w-full flex justify-center">
@@ -188,7 +198,7 @@
 
 
   <!-- Bestseller Section (Sticky Scroll) -->
-  <section class="mt-12">
+  <section id="bestseller" class="mt-12">
     <div class="relative  h-[219px] md:h-[759px] flex flex-col items-center justify-center bg-white">
       <div
         class="absolute top-0 w-[346px] md:w-[1200px] h-[219px] md:w-full md:max-w-[1200px] md:aspect-[1200/759] md:h-auto bg-gray-100 mb-8 overflow-hidden group">
@@ -214,11 +224,11 @@
   </section>
 
   <!-- Collections Section -->
-  <section class="mt-12 flex flex-col items-center space-y-5 md:space-y-[68px] bg-white">
+  <section id="collections" class="mt-12 flex flex-col items-center space-y-5 md:space-y-[68px] bg-white">
     <!-- Collection 01 (Full Width/Large) -->
     <div class="relative w-full max-w-[346px] md:max-w-[978px] h-[167px] md:h-[550px] overflow-hidden group">
       <img src="./assets/collection_01.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Collection 01"
-        class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
+        loading="lazy" class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
 
       <video autoplay muted loop playsinline
         class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100">
@@ -239,10 +249,11 @@
 
         <!-- default image -->
         <img src="./assets/collection_02.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 02"
-          class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
+          loading="lazy" class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
 
         <!-- hover image -->
         <img src="./assets/collection_hover.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 02 Hover"
+          loading="lazy"
           class="absolute inset-0 w-full h-full object-fit opacity-0 transition-opacity duration-500 group-hover:opacity-100">
 
         <div class="absolute inset-0 flex items-center justify-center z-10">
@@ -254,10 +265,11 @@
       <div class="relative w-full aspect-square overflow-hidden group">
         <!-- default image -->
         <img src="./assets/collection_03.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 02"
-          class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
+          loading="lazy" class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
 
         <!-- hover image -->
-        <img src="./assets/collection_hover.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 02 Hover"
+        <img src="./assets/collection_hover.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 03 Hover"
+          loading="lazy"
           class="absolute inset-0 w-full h-full object-fit opacity-0 transition-opacity duration-500 group-hover:opacity-100">
 
         <div class="absolute inset-0 flex items-center justify-center z-10">
@@ -270,7 +282,7 @@
   </section>
 
   <!-- Marquee Section -->
-  <section class="mt-20 bg-black text-white py-2 overflow-hidden whitespace-nowrap ">
+  <section id="marquee" class="mt-20 bg-black text-white py-2 overflow-hidden whitespace-nowrap ">
     <div class="animate-scroll">
       <span class="text-[24px] md:text-[60px] font-black uppercase mx-12 inline-flex items-center gap-6">
         NEW ARRIVAL <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
@@ -312,7 +324,7 @@
   </section>
 
   <!-- Info Section -->
-  <section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto py-10 px-5 text-left">
+  <section id="info" class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto py-10 px-5 text-left">
     <div>
       <h4 class="text-base font-bold uppercase mb-4 leading-none">WORLDWIDE SHIPPING</h4>
       <p class="text-sm text-gray-600 leading-none">Lorem ipsum dolor sit amet,
@@ -334,7 +346,7 @@
   </section>
 
   <!-- FAQ Section -->
-  <section class="mt-12 bg-black text-white py-10 px-5 text-center">
+  <section id="faq" class="mt-12 bg-black text-white py-10 px-5 text-center">
     <div class="mb-16">
       <h2 class="text-4xl md:text-5xl font-black uppercase mb-5">FREQUENTLY ASKED QUESTIONS</h2>
       <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus
@@ -342,26 +354,112 @@
     </div>
 
     <div id="faq-tabs" class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-4 mb-16 px-4">
-      <button onclick="setActiveTab(this)"
+      <button onclick="setActiveTab(this)" data-tab="orders"
         class="faq-tab bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-3 rounded-full text-xs font-bold uppercase transition-colors w-auto min-w-[120px]">ORDERS</button>
-      <button onclick="setActiveTab(this)"
+      <button onclick="setActiveTab(this)" data-tab="shipping"
         class="faq-tab bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-3 rounded-full text-xs font-bold uppercase transition-colors w-auto min-w-[120px]">SHIPPING</button>
-      <button onclick="setActiveTab(this)"
+      <button onclick="setActiveTab(this)" data-tab="returns"
         class="faq-tab active bg-white text-black px-8 py-3 rounded-full text-xs font-bold uppercase transition-colors w-auto min-w-[200px]">RETURNS
         &
         EXCHANGES</button>
-      <button onclick="setActiveTab(this)"
+      <button onclick="setActiveTab(this)" data-tab="sizing"
         class="faq-tab bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-3 rounded-full text-xs font-bold uppercase transition-colors w-auto min-w-[180px]">SIZING
         & PRODUCTS</button>
     </div>
 
+    <!-- Orders FAQ Panel -->
+    <div data-faq-panel="orders" class="faq-panel hidden max-w-4xl mx-auto text-left border-t border-zinc-800">
+      <details class="group border-b border-zinc-800" open>
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">HOW DO I TRACK MY ORDER?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Once your order is shipped, you will receive a confirmation email with a tracking number. You can use this
+            number on our website or the carrier's site to track your package.</p>
+        </div>
+      </details>
+      <details class="group border-b border-zinc-800">
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">CAN I MODIFY OR CANCEL MY ORDER?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Orders can be modified or cancelled within 1 hour of placement. After that, we begin processing and changes
+            may not be possible. Please contact customer service immediately.</p>
+        </div>
+      </details>
+      <details class="group border-b border-zinc-800">
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">WHAT PAYMENT METHODS DO YOU
+            ACCEPT?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>We accept Visa, Mastercard, American Express, PayPal, and bank transfers. All transactions are securely
+            processed.</p>
+        </div>
+      </details>
+    </div>
 
+    <!-- Shipping FAQ Panel -->
+    <div data-faq-panel="shipping" class="faq-panel hidden max-w-4xl mx-auto text-left border-t border-zinc-800">
+      <details class="group border-b border-zinc-800" open>
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">DO YOU OFFER INTERNATIONAL
+            SHIPPING?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Items can be returned within 14 days of receipt, provided they are unworn, unwashed, and in original
+            condition with tags attached.</p>
+        </div>
+      </details>
+      <details class="group border-b border-zinc-800">
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">HOW LONG DOES DELIVERY TAKE?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Items can be returned within 14 days of receipt, provided they are unworn, unwashed, and in original
+            condition with tags attached.</p>
+        </div>
+      </details>
+      <details class="group border-b border-zinc-800">
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">HOW CAN I TRACK MY ORDER?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Items can be returned within 14 days of receipt, provided they are unworn, unwashed, and in original
+            condition with tags attached.</p>
+        </div>
+      </details>
+    </div>
 
-    <div class="max-w-4xl mx-auto text-left border-t border-zinc-800">
+    <!-- Returns & Exchanges FAQ Panel (default active) -->
+    <div data-faq-panel="returns" class="faq-panel max-w-4xl mx-auto text-left border-t border-zinc-800">
       <details class="group border-b border-zinc-800" open>
         <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
           <span class="text-base md:text-xl font-black uppercase text-left pr-4">WHAT IS YOUR RETURN POLICY?</span>
-          <!-- Chevron Icon -->
           <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
             fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -376,7 +474,6 @@
         <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
           <span class="text-base md:text-xl font-black uppercase text-left pr-4">CAN I EXCHANGE FOR A DIFFERENT
             SIZE?</span>
-          <!-- Chevron Icon -->
           <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
             fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -389,27 +486,68 @@
       <details class="group border-b border-zinc-800">
         <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
           <span class="text-base md:text-xl font-black uppercase text-left pr-4">ARE SALE ITEMS REFUNDABLE?</span>
-          <!-- Chevron Icon -->
           <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
             fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
         </summary>
         <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
-          <p>Sale items are final sale and cannot be returned or exchanged unless there is a manufacturing defect.
-          </p>
+          <p>Sale items are final sale and cannot be returned or exchanged unless there is a manufacturing defect.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Sizing & Products FAQ Panel -->
+    <div data-faq-panel="sizing" class="faq-panel hidden max-w-4xl mx-auto text-left border-t border-zinc-800">
+      <details class="group border-b border-zinc-800" open>
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">HOW DO I FIND MY SIZE?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Please refer to our size guide on each product page. We recommend measuring yourself and comparing with our
+            chart for the best fit.</p>
+        </div>
+      </details>
+      <details class="group border-b border-zinc-800">
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">ARE YOUR PRODUCTS TRUE TO SIZE?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Most of our items run true to size. Some oversized or relaxed-fit pieces may fit differently — check
+            individual product descriptions for specific fit notes.</p>
+        </div>
+      </details>
+      <details class="group border-b border-zinc-800">
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">WHAT MATERIALS DO YOU USE?</span>
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>We use premium fabrics including organic cotton, silk, linen, and sustainable blends. Material details are
+            listed on every product page.</p>
         </div>
       </details>
     </div>
   </section>
 
   <!-- Inquiry Section -->
-  <section class="mt-12 py-10 px-5 bg-white text-black">
+  <section id="inquiry" class="mt-12 py-10 px-5 bg-white text-black">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-16">
       <div class="flex-1 max-w-md">
         <h2 class="text-4xl md:text-7xl font-black uppercase leading-[0.9] mb-5">MAKE AN <br
             class="hidden md:block">INQUIRY</h2>
-        <p class="text-xs text-gray-700 leading-[16px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        <p class="text-gray-700 leading-[16px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           Nam
           ornare, nisl non rhoncus commodo.</p>
       </div>
@@ -454,7 +592,7 @@
           </div>
 
           <div>
-            <label class="flex items-center gap-3 cursor-pointer text-sm">
+            <label class="flex text-gray-500 items-center gap-3 cursor-pointer text-sm">
               <input type="checkbox" required class="w-4 h-4">
               I agree to all terms & conditions
             </label>
@@ -510,7 +648,7 @@
         </form>
       </div>
     </div>
-    <div class="max-w-[1400px] mx-auto flex justify-between pt-5 border-t border-gray-200 text-xs font-bold text-black">
+    <div class="max-w-[1400px] mx-auto flex justify-between pt-5 text-xs font-bold text-black">
       <span>&copy;PLAIMANAS</span>
       <span>Web by ::*</span>
     </div>
