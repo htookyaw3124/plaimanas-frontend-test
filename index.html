@@ -581,13 +581,15 @@
               <label>Phone Number*</label>
             </div>
             <div class="flex-1 float-label">
-              <select
+              <select required
                 style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%239ca3af%22 stroke-width=%222%22%3E%3Cpath d=%22M19 9l-7 7-7-7%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right center; background-size: 16px; -webkit-appearance: none; appearance: none; color: #9ca3af;"
                 onchange="this.style.color='#000'">
-                <option value="" disabled selected>Select Subject*</option>
+                <option value="" disabled selected hidden></option>
                 <option value="general">General Inquiry</option>
-                <option value="support">Support</option>
+                <option value="career">Job Application</option>
+                <option value="support">Media & Press</option>
               </select>
+              <label>Select Subject*</label>
             </div>
           </div>
 

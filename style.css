@@ -43,7 +43,7 @@
 .float-label input:focus~label,
 .float-label input:not(:placeholder-shown)~label,
 .float-label select:focus~label,
-.float-label select:not([data-empty])~label {
+.float-label select:valid~label {
   top: -2px;
   font-size: 11px;
   color: #9ca3af;
