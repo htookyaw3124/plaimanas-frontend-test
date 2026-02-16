@@ -1,0 +1,50 @@
+/* Custom scrollbar hide if needed */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Floating label */
+.float-label {
+  position: relative;
+}
+
+.float-label input,
+.float-label select {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #d1d5db;
+  padding: 16px 0 8px 0;
+  font-size: 14px;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.float-label input:focus,
+.float-label select:focus {
+  border-bottom-color: #000;
+}
+
+.float-label label {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  font-size: 14px;
+  color: #9ca3af;
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.float-label input:focus~label,
+.float-label input:not(:placeholder-shown)~label,
+.float-label select:focus~label,
+.float-label select:not([data-empty])~label {
+  top: -2px;
+  font-size: 11px;
+  color: #9ca3af;
+}

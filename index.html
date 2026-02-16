@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plaimanas Static Page</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Inter:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Hanken Grotesk"', "sans-serif"],
+          },
+          animation: {
+            scroll: "scroll 20s linear infinite",
+          },
+          keyframes: {
+            scroll: {
+              "0%": { transform: "translateX(0)" },
+              "100%": { transform: "translateX(-50%)" },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+</head>
+
+<body class="font-sans text-black bg-white overflow-x-hidden antialiased">
+  <!-- Header Section -->
+  <header
+    class="fixed top-0 left-0 w-full flex justify-between items-center px-5 py-5 bg-white z-[1002] border-b border-gray-100 text-xs uppercase">
+    <!-- Left: Currency -->
+    <div class="header-left relative text-[13px]">
+      <button onclick="document.getElementById('currency-dropdown').classList.toggle('hidden')"
+        class="cursor-pointer flex items-center gap-1">
+        <span id="currency-label">TH - THB</span> ▼
+      </button>
+      <div id="currency-dropdown"
+        class="w-[90px] hidden absolute top-full left-0 mt-2 bg-white border border-gray-200 shadow-md rounded text-xs uppercase z-[1100]">
+        <button onclick="setCurrency('TH - THB')"
+          class="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors">TH - THB</button>
+        <button onclick="setCurrency('US - USD')"
+          class="block w-full text-left px-4 py-3 hover:bg-gray-100 transition-colors">US - USD</button>
+      </div>
+    </div>
+
+
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex space-x-8 text-[13px] font-normal leading-none tracking-normal">
+      <a href="#"
+        class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block">WOMEN</a>
+      <a href="#"
+        class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block">COLLECTIONS</a>
+      <div class="group/editorial static">
+        <a href="#"
+          class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block relative z-[1100] group-hover/editorial:opacity-0">EDITORIAL</a>
+        <!-- Full Page Overlay Menu -->
+        <div
+          class="fixed inset-0 w-full h-screen bg-black/90 text-white flex items-start pt-24 justify-center opacity-0 invisible group-hover/editorial:opacity-100 group-hover/editorial:visible transition-all duration-300 z-[1050]">
+          <div class="flex flex-col items-start gap-3">
+            <span class="text-base font-bold uppercase mb-1">EDITORIAL</span>
+            <a href="#"
+              class="text-[13px] hover:text-base hover:font-bold transition-all duration-200 uppercase">A.S.C</a>
+            <a href="#"
+              class="text-[13px] hover:text-base hover:font-bold transition-all duration-200 uppercase">BAZAAR</a>
+            <a href="#"
+              class="text-[13px] hover:text-base hover:font-bold transition-all duration-200 uppercase">ELLE</a>
+            <a href="#" class="text-[13px] hover:text-base hover:font-bold transition-all duration-200 uppercase">GQ</a>
+          </div>
+        </div>
+      </div>
+      <a href="#"
+        class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block">NEWS</a>
+      <a href="#"
+        class="hover:font-bold hover:scale-110 transition-all duration-200 origin-center inline-block">STORIES</a>
+    </nav>
+
+    <!-- Mobile Hamburger / Close Toggle -->
+    <div class="md:hidden cursor-pointer z-[1002]" onclick="toggleMenu()">
+      <div id="hamburger-icon" class="flex flex-col justify-between h-3 w-6">
+        <span class="block w-full h-[1px] bg-black"></span>
+        <span class="block w-full h-[1px] bg-black"></span>
+      </div>
+      <div id="close-icon" class="hidden text-2xl font-light leading-none">
+        &#10005;
+      </div>
+    </div>
+
+    <!-- Right: Sign In & Bag -->
+    <div class="header-right flex items-center space-x-5 text-[13px]">
+      <a href="#" class="hover:text-gray-600 transition-colors">SIGN IN</a>
+      <a href="#" class="text-lg">
+        <img src="./assets/bag.svg" alt="">
+      </a>
+      <!-- Icon bag -->
+    </div>
+  </header>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu"
+    class="fixed inset-0 bg-white z-[1001] opacity-0 invisible transition-all duration-300 ease-in-out flex flex-col items-center text-center">
+
+
+    <!-- Menu Links -->
+    <nav class="flex flex-col space-y-8 text-[13px] font-normal uppercase leading-none tracking-normal mt-12">
+      <a href="#" class="hover:text-gray-500 transition-colors">WOMEN</a>
+      <a href="#" class="hover:text-gray-500 transition-colors">COLLECTIONS</a>
+      <details class="group">
+        <summary
+          class="hover:text-gray-500 transition-colors cursor-pointer list-none flex items-center justify-center gap-2">
+          EDITORIAL
+          <svg class="w-3 h-3 transition-transform duration-300 group-open:rotate-180" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="flex flex-col space-y-4 mt-4 text-xs font-normal tracking-wider">
+          <a href="#" class="hover:text-gray-500 transition-colors">A.S.C</a>
+          <a href="#" class="hover:text-gray-500 transition-colors">BAZAAR</a>
+          <a href="#" class="hover:text-gray-500 transition-colors">ELLE</a>
+          <a href="#" class="hover:text-gray-500 transition-colors">GQ</a>
+        </div>
+      </details>
+      <a href="#" class="hover:text-gray-500 transition-colors">NEWS</a>
+      <a href="#" class="hover:text-gray-500 transition-colors">STORIES</a>
+    </nav>
+
+    <!-- Bottom Branding -->
+    <div class="absolute bottom-10 w-full text-center px-5">
+      <h1 class="text-5xl font-black uppercase tracking-tighter">
+        PLAIMANAS
+      </h1>
+    </div>
+  </div>
+
+  <!-- Video Background Section (Hero) -->
+  <section class="relative w-full h-[150vh] bg-black">
+    <!-- Sticky Video -->
+    <video autoplay muted loop playsinline class="sticky top-10 left-0 w-full h-screen object-cover z-10 block">
+      <source src="./assets/banner_desktop.mp4" type="video/mp4" />
+      Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Logo Text with Negative Effect -->
+    <div
+      class="fixed top-0 px-auto sm:left-0 w-full h-full z-[100] flex justify-center items-start pointer-events-none mix-blend-difference">
+      <img src="./assets/Logo.svg" alt="PLAIMANAS"
+        class="sm:h-[100px] sm:w-[1000px] md:h-[215px] md:w-[1402px] mt-[68px] md:mt-[8px] object-contain">
+    </div>
+  </section>
+
+
+
+  <!-- Featured Section -->
+  <section class="mt-16">
+    <div class="relative h-[286px] md:h-[572px] flex flex-col items-center justify-center bg-white">
+      <div
+        class="absolute top-0 w-[282px] h-[286px] md:w-full md:max-w-[566px] md:aspect-[566/572] md:h-auto bg-gray-100 mb-8 overflow-hidden group">
+        <img src="./assets/dts_teeth.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Featured Item"
+          class="w-full h-full object-cover block transition-transform duration-700 group-hover:scale-105">
+      </div>
+      <div class="sticky top-[140px] md:top-[280px] z-10 w-full flex justify-center">
+        <span
+          class="text-5xl md:text-[80px] font-black text-white uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">NEW</span>
+      </div>
+    </div>
+    <div class="mt-5 mb-10 w-full h-[100px] flex justify-center">
+      <div class="text-center max-w-xl gap-[14px]">
+        <h3 class="text-sm font-bold mb-3 text-black leading-none">Sed egestas, nibh a condimentum imperdiet</h3>
+        <p class="text-xs text-gray-700 leading-[16px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+          ornare, nisl non rhoncus commodo, turpis elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Bestseller Section (Sticky Scroll) -->
+  <section class="mt-12">
+    <div class="relative  h-[219px] md:h-[759px] flex flex-col items-center justify-center bg-white">
+      <div
+        class="absolute top-0 w-[346px] md:w-[1200px] h-[219px] md:w-full md:max-w-[1200px] md:aspect-[1200/759] md:h-auto bg-gray-100 mb-8 overflow-hidden group">
+        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+          <source src="./assets/best_seller.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <div class="sticky top-[140px] md:top-[280px] z-10 w-full flex justify-center">
+        <span
+          class="text-5xl md:text-[80px] font-black text-white uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">BESTSELLER</span>
+      </div>
+    </div>
+
+    <div class="mt-5 mb-10 w-full h-[100px] flex justify-center">
+      <div class="text-center max-w-xl gap-[14px]">
+        <h3 class="text-sm font-bold mb-3 text-black leading-none">Sed egestas, nibh a condimentum imperdiet</h3>
+        <p class="text-xs text-gray-700 leading-[16px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
+          ornare, nisl non rhoncus commodo, turpis elit ultricies justo, vitae molestie quam justo ut lacus. Proin vitae
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Collections Section -->
+  <section class="mt-12 flex flex-col items-center space-y-5 md:space-y-[68px] bg-white">
+    <!-- Collection 01 (Full Width/Large) -->
+    <div class="relative w-full max-w-[346px] md:max-w-[978px] h-[167px] md:h-[550px] overflow-hidden group">
+      <img src="./assets/collection_01.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Collection 01"
+        class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
+
+      <video autoplay muted loop playsinline
+        class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+        <source src="./assets/best_seller.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+
+      <div class="absolute inset-0 flex items-center justify-center z-10">
+        <span
+          class="text-[30px] md:text-[60px] font-black text-white uppercase leading-none tracking-normal drop-shadow-md">COLLECTION
+          01</span>
+      </div>
+    </div>
+
+    <!-- Collections 02 & 03 (Grid) -->
+    <div class="grid grid-cols-2 gap-5 md:gap-[68px] w-full max-w-[346px] md:max-w-[978px]">
+      <div class="relative w-full aspect-square overflow-hidden group">
+
+        <!-- default image -->
+        <img src="./assets/collection_02.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 02"
+          class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
+
+        <!-- hover image -->
+        <img src="./assets/collection_hover.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 02 Hover"
+          class="absolute inset-0 w-full h-full object-fit opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+
+        <div class="absolute inset-0 flex items-center justify-center z-10">
+          <span
+            class="text-[18px] md:text-[40px] font-black text-white uppercase leading-none tracking-normal text-center drop-shadow-md">COLLECTION<br
+              class="md:hidden"> 02</span>
+        </div>
+      </div>
+      <div class="relative w-full aspect-square overflow-hidden group">
+        <!-- default image -->
+        <img src="./assets/collection_03.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 02"
+          class="w-full h-full object-fit transition-opacity duration-500 group-hover:opacity-0">
+
+        <!-- hover image -->
+        <img src="./assets/collection_hover.jpg?auto=compress&cs=tinysrgb&w=455&h=455&dpr=2" alt="Collection 02 Hover"
+          class="absolute inset-0 w-full h-full object-fit opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+
+        <div class="absolute inset-0 flex items-center justify-center z-10">
+          <span
+            class="text-[18px] md:text-[40px] font-black text-white uppercase leading-none tracking-normal text-center drop-shadow-md">COLLECTION<br
+              class="md:hidden"> 03</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee Section -->
+  <section class="mt-20 bg-black text-white py-2 overflow-hidden whitespace-nowrap ">
+    <div class="animate-scroll">
+      <span class="text-[24px] md:text-[60px] font-black uppercase mx-12 inline-flex items-center gap-6">
+        NEW ARRIVAL <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        BEST SELLING <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+        NEW ARRIVAL <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        BEST SELLING <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </span>
+      <span class="text-[24px] md:text-[60px] font-black uppercase mx-12 inline-flex items-center gap-6">
+        NEW ARRIVAL <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        BEST SELLING <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+        NEW ARRIVAL <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        BEST SELLING <svg xmlns="http://www.w3.org/2000/svg" class="h-8 md:h-12 w-auto" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </span>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto py-10 px-5 text-left">
+    <div>
+      <h4 class="text-base font-bold uppercase mb-4 leading-none">WORLDWIDE SHIPPING</h4>
+      <p class="text-sm text-gray-600 leading-none">Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nam
+        ornare, nisl non rhoncus commodo, turpis elit ultricies justo, vitae molestie quam justo ut lacus.</p>
+    </div>
+    <div>
+      <h4 class="text-base font-bold uppercase mb-4 leading-none">CUSTOMER SERVICE</h4>
+      <p class="text-sm text-gray-600 leading-none"><span class="underline">Lorem ipsum dolor sit amet</span>,
+        consectetur adipiscing elit. Nam
+        ornare, nisl non rhoncus commodo, turpis elit ultricies justo, vitae molestie quam justo ut lacus.</p>
+    </div>
+    <div>
+      <h4 class="text-base font-bold uppercase mb-4 leading-none">SECURE PAYMENT</h4>
+      <p class="text-sm text-gray-600 leading-none">Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Nam
+        ornare, nisl non rhoncus commodo, turpis elit ultricies justo, vitae molestie quam justo ut lacus.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="mt-12 bg-black text-white py-10 px-5 text-center">
+    <div class="mb-16">
+      <h2 class="text-4xl md:text-5xl font-black uppercase mb-5">FREQUENTLY ASKED QUESTIONS</h2>
+      <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare, nisl non rhoncus
+        commodo.</p>
+    </div>
+
+    <div id="faq-tabs" class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-4 mb-16 px-4">
+      <button onclick="setActiveTab(this)"
+        class="faq-tab bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-3 rounded-full text-xs font-bold uppercase transition-colors w-auto min-w-[120px]">ORDERS</button>
+      <button onclick="setActiveTab(this)"
+        class="faq-tab bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-3 rounded-full text-xs font-bold uppercase transition-colors w-auto min-w-[120px]">SHIPPING</button>
+      <button onclick="setActiveTab(this)"
+        class="faq-tab active bg-white text-black px-8 py-3 rounded-full text-xs font-bold uppercase transition-colors w-auto min-w-[200px]">RETURNS
+        &
+        EXCHANGES</button>
+      <button onclick="setActiveTab(this)"
+        class="faq-tab bg-zinc-800 hover:bg-zinc-700 text-white px-8 py-3 rounded-full text-xs font-bold uppercase transition-colors w-auto min-w-[180px]">SIZING
+        & PRODUCTS</button>
+    </div>
+
+
+
+    <div class="max-w-4xl mx-auto text-left border-t border-zinc-800">
+      <details class="group border-b border-zinc-800" open>
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">WHAT IS YOUR RETURN POLICY?</span>
+          <!-- Chevron Icon -->
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Items can be returned within 14 days of receipt, provided they are unworn, unwashed, and in original
+            condition with tags attached.</p>
+        </div>
+      </details>
+      <details class="group border-b border-zinc-800">
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">CAN I EXCHANGE FOR A DIFFERENT
+            SIZE?</span>
+          <!-- Chevron Icon -->
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Yes, exchanges are processed within 7 business days of receiving your return.</p>
+        </div>
+      </details>
+      <details class="group border-b border-zinc-800">
+        <summary class="py-6 flex justify-between items-center cursor-pointer list-none select-none">
+          <span class="text-base md:text-xl font-black uppercase text-left pr-4">ARE SALE ITEMS REFUNDABLE?</span>
+          <!-- Chevron Icon -->
+          <svg class="w-4 h-4 transform transition-transform duration-300 group-open:rotate-180 flex-shrink-0"
+            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pb-8 text-gray-400 leading-relaxed text-sm md:text-base">
+          <p>Sale items are final sale and cannot be returned or exchanged unless there is a manufacturing defect.
+          </p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Inquiry Section -->
+  <section class="mt-12 py-10 px-5 bg-white text-black">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-16">
+      <div class="flex-1 max-w-md">
+        <h2 class="text-4xl md:text-7xl font-black uppercase leading-[0.9] mb-5">MAKE AN <br
+            class="hidden md:block">INQUIRY</h2>
+        <p class="text-xs text-gray-700 leading-[16px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Nam
+          ornare, nisl non rhoncus commodo.</p>
+      </div>
+      <div class="flex-[2] w-full">
+        <form class="flex flex-col gap-10">
+          <div class="flex gap-8">
+            <label class="flex items-center gap-3 cursor-pointer text-sm">
+              <input type="radio" name="type" value="onsite" checked class="w-5 h-5 accent-black">
+              Onsite
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer text-sm">
+              <input type="radio" name="type" value="hybrid" class="w-5 h-5 accent-black">
+              Hybrid
+            </label>
+          </div>
+
+          <div class="flex flex-col md:flex-row gap-10">
+            <div class="flex-1 float-label">
+              <input type="text" placeholder=" " required>
+              <label>Full name*</label>
+            </div>
+            <div class="flex-1 float-label">
+              <input type="email" placeholder=" " value="Plaimanas@gmail.com" required>
+              <label>Email*</label>
+            </div>
+          </div>
+
+          <div class="flex flex-col md:flex-row gap-10">
+            <div class="flex-1 float-label">
+              <input type="tel" placeholder=" ">
+              <label>Phone Number*</label>
+            </div>
+            <div class="flex-1 float-label">
+              <select
+                style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%239ca3af%22 stroke-width=%222%22%3E%3Cpath d=%22M19 9l-7 7-7-7%22/%3E%3C/svg%3E'); background-repeat: no-repeat; background-position: right center; background-size: 16px; -webkit-appearance: none; appearance: none; color: #9ca3af;"
+                onchange="this.style.color='#000'">
+                <option value="" disabled selected>Select Subject*</option>
+                <option value="general">General Inquiry</option>
+                <option value="support">Support</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="flex items-center gap-3 cursor-pointer text-sm">
+              <input type="checkbox" required class="w-4 h-4">
+              I agree to all terms & conditions
+            </label>
+          </div>
+
+          <button type="submit"
+            class="self-start bg-black text-white px-12 py-4 text-sm font-bold uppercase hover:bg-zinc-800 transition-colors md:w-auto">SEND</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+
+  <div class="max-w-[1400px] mx-auto mt-12">
+    <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;"
+      class="text-xs font-bold uppercase text-black hover:text-gray-600 transition-colors inline-block pb-1 border-b border-transparent hover:border-gray-600">HOMEPAGE</a>
+  </div>
+  <footer class="bg-[#F8F9F8] pt-10 pb-10 px-10 text-gray-800">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-2 lg:grid-cols-5 gap-10 mb-20">
+      <div class="flex flex-col gap-4">
+        <h4 class="text-[13px] font-normal uppercase mb-2 text-black leading-none">ABOUT</h4>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Women</a>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Collections</a>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Editorial</a>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Stories</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h4 class="text-[13px] font-normal uppercase mb-2 text-black leading-none">HELP</h4>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Payment
+          Notification</a>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Customer Service</a>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">FAQ</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h4 class="text-[13px] font-normal uppercase mb-2 text-black leading-none">SOCIAL</h4>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Instagram</a>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Facebook</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <h4 class="text-[13px] font-normal uppercase mb-2 text-black leading-none">LEGAL</h4>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Terms & Conditions</a>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Privacy Policy</a>
+        <a href="#" class="text-xs text-gray-500 hover:text-black transition-colors leading-none">Cookies Policy</a>
+      </div>
+      <div class="col-span-2 lg:col-span-1 flex flex-col gap-4 min-w-[250px]">
+        <h4 class="text-[13px] font-normal uppercase mb-2 text-black leading-none">NEWSLETTER</h4>
+        <form class="flex flex-col gap-5">
+          <input type="email" placeholder="Email" required
+            class="w-full border-b border-gray-300 py-2 text-sm bg-transparent outline-none focus:border-black">
+          <button type="submit"
+            class="w-full bg-gray-200 text-[13px] font-normal uppercase py-4 hover:bg-gray-300 transition-colors">SUBSCRIBE</button>
+        </form>
+      </div>
+    </div>
+    <div class="max-w-[1400px] mx-auto flex justify-between pt-5 border-t border-gray-200 text-xs font-bold text-black">
+      <span>&copy;PLAIMANAS</span>
+      <span>Web by ::*</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
